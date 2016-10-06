@@ -1,0 +1,125 @@
+br
+br
+.input-control.text(style="width:100%;")
+	input(placeholder="Ingrese texto para búsqueda",id="txt_search_my_surveys")
+br
+br
+a(onclick='$("#search_controls").toggle(200)',href='javascript:;')
+	strong Controles de búsqueda
+#search_controls(style='display:none;padding-left:2.5%;')
+	label.input-control.checkbox.small-check
+		input(type="checkbox",onchange='var val = this.checked;$(\'input[name="select_my_survey"]\').each(function(){if($(this).parent().parent().parent().css("display") != "none") $(this).prop("checked", val)})')
+		span.check
+		span.caption Seleccionar/Deseleccionar Todos&nbsp;&nbsp;
+	label.input-control.checkbox.small-check
+		input(id="see_all_not_started",type="checkbox",onchange='$(\'div[data-status="not-started"]\').css("display", this.checked?"":"none");' checked)
+		span.check
+		span.caption Ver los que aun no han comenzado&nbsp;&nbsp;
+	label.input-control.checkbox.small-check
+		input(id="see_all_ongoing",type="checkbox",onchange='$(\'div[data-status="ongoing"]\').css("display", this.checked?"":"none");' checked)
+		span.check
+		span.caption Ver los que estan en proceso&nbsp;&nbsp;
+	label.input-control.checkbox.small-check
+		input(id="see_all_finished",type="checkbox",onchange='$(\'div[data-status="finished"]\').css("display", this.checked?"":"none");' checked)
+		span.check
+		span.caption Ver los que ya han sido cerrados
+	br
+	button.button.success#start_selected_surveys Iniciar Cuestionarios Seleccionados
+	button.button.warning#stop_selected_surveys Detener Cuestionarios Seleccionados
+	button.button.danger#delete_selected_surveys Borrar Cuestionarios Seleccionados
+br
+br
+#list_my_surveys
+	each survey in surveys
+		div(id="div_survey_#{survey._id}",
+			data-id="#{survey._id}",
+			data-tags="#{survey.stringify_tags}",
+			data-type-application="#{survey.type_time_apply}",
+			data-start="#{survey.start}",
+			data-end="#{survey.end}",
+			data-time-amount="#{survey['time_amount']}",
+			data-time-type="#{survey['time_type']}",
+			data-status="#{survey.status}",
+			data-started-at="#{survey.started_at}")
+			case survey.status
+				when "not-started"
+					.panel.success.collapsed(data-role="panel")
+						.heading
+							span &nbsp;
+							input(type="checkbox" name = "select_my_survey", value = "#{survey._id}")
+							span.title(data-name="title") #{survey.title}
+							span(style="font-size:14px;display:none;", id="span_waiting_for_manual_starting_#{survey._id}") &nbsp;(Esperando por activación manual)
+							span(style="font-size:14px;display:none;",id="span_resting_time_#{survey._id}")
+						.content(style="padding:0% 1% 0% 1%;background-color:white;border:solid 0.5px;border-color:#DDD;")
+							span.do_survey
+								br
+								a(target="_blank",href="#{survey_url_base}#{survey.hash}",class="") Realizar
+								br
+							div(style="background-color:white;",data-name="description",target="_blank")!= survey.description
+							br
+							br
+							div
+								button.button.primary(data-type-button="navigate",style="display:none;") Navegar
+								button.button.success(data-type-button="start",style="display:none;") Activar
+								button.button.danger(data-type-button="stop",style="display:none;") Detener
+								button.button.info(style="display:none;",data-type="edit-survey",data-id="#{survey._id}",data-type-button="edit") Editar
+								button.button.danger(style="display:none;",data-type="delete-survey",data-id="#{survey._id}",data-type-button="delete") Eliminar
+								br
+								br
+						br
+				when "ongoing"
+					.panel.warning.collapsed(data-role="panel")
+						.heading
+							span &nbsp;
+							input(type="checkbox" name = "select_my_survey", value = "#{survey._id}")
+							span.title(data-name="title") #{survey.title}
+							span(style="font-size:14px;display:none;",id="span_resting_time_#{survey._id}")
+						.content(style="padding:0% 1% 0% 1%;background-color:white;border:solid 0.5px;border-color:#DDD;")
+							span.do_survey
+								br
+								a(target="_blank",href="#{survey_url_base}#{survey.hash}",class="") Realizar
+								br
+							div(style="background-color:white;",data-name="description",target="_blank")!= survey.description
+							br
+							br
+							div
+								button.button.primary(data-type-button="navigate",style="display:none;") Navegar
+								button.button.success(data-type-button="start",style="display:none;") Activar
+								button.button.danger(data-type-button="stop",style="display:none;") Detener
+								button.button.info(data-type-button="edit",style="display:none;",data-type="edit-survey",data-id="#{survey._id}") Editar
+								button.button.danger(data-type-button="delete",style="display:none;",data-type="delete-survey",data-id="#{survey._id}") Eliminar
+								br
+								br
+						br
+				when "finished"
+					.panel.alert.collapsed(data-role="panel")
+						.heading
+							span &nbsp;
+							input(type="checkbox" name = "select_my_survey", value = "#{survey._id}")
+							span.title(data-name="title") #{survey.title}
+						.content(style="padding:0% 1% 0% 1%;background-color:white;border:solid 0.5px;border-color:#DDD;")
+							span.do_survey
+								br
+								a(target="_blank",href="#{survey_url_base}#{survey.hash}",class="") Realizar
+								br
+							div(style="background-color:white;",data-name="description",target="_blank")!= survey.description
+							br
+							br
+							div
+								button.button.primary(data-type-button="navigate",style="display:none;") Navegar
+								button.button.success(data-type-button="start",style="display:none;") Activar
+								button.button.danger(data-type-button="stop",style="display:none;") Detener
+								button.button.info(data-type-button="edit",style="display:none;",data-type="edit-survey",data-id="#{survey._id}") Editar
+								button.button.danger(data-type-button="delete",style="display:none;",data-type="delete-survey",data-id="#{survey._id}") Eliminar
+								br
+								br
+						br
+
+div(align="center")
+	h4#no_surveys(style="display:none;") No hay elementos por mostrar
+
+div(data-role="dialog",id="dialog_delete_survey",data-type="",data-close-button="true",style="padding:2%;")
+	h1 Confirmar
+	p ¿Está seguro de querer borrar este item?
+	button.button.primary(id="delete_survey") Aceptar
+	button.button.warning(id="cancel_delete_survey") Cancelar

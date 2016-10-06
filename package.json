@@ -1,0 +1,28 @@
+{
+  "name": "censo",
+  "version": "1.0.0",
+  "description": "learning mean",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rosendo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.3",
+    "express-session": "^1.13.0",
+    "jade": "^1.11.0",
+    "mongodb": "^2.1.14",
+    "multer": "^1.1.0",
+    "node-gyp": "^3.3.1",
+    "node-inspector": "^0.12.8",
+    "nodemailer": "^2.3.0",
+    "password-hash": "^1.2.2",
+    "pm2": "^1.1.1",
+    "socket.io": "^1.4.5",
+    "util": "^0.10.3",
+    "websocket": "^1.0.22"
+  }
+}

@@ -1,0 +1,9 @@
+- cuando estoy en la interfaz de encuesta
+	* si la encuesta no ha empezado y esta es de activacion manual, se recibe un pushing de activacion
+	* si la encuesta esta en curso y esta es de termino manual, se recibe un pushing de termino
+	* si la encuesta esta cerrada y su dueño la elimina, se recibe un pushing de no existe mas esta encuesta
+- notificaciones
+	* de encuestas
+	* de encuesta
+	* de usuarios, comunidad,  contactos
+	* de hilos

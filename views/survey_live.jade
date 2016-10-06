@@ -1,0 +1,121 @@
+doctype html
+html
+	head
+		meta(charset='UTF-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+		meta(name='description', content='sistema de censos')
+		meta(name='keywords', content='HTML, CSS, JS, JavaScript, framework, metro, front-end, frontend, web development')
+		meta(name='author', content='jose rosendo')
+		link(rel='shortcut icon', type='image/x-icon', href='favicon.ico')
+		title #{survey.title}
+		link(href='/assets/survey-live/css/material.css', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+	body
+		#home_interface(align="center",style="display:none;")
+			input#survey_status(type="hidden",value="#{survey.status}")
+			input#survey_id(type="hidden",value="#{survey._id}")
+
+			input#survey_applying_id(type="hidden",value="#{user_doing_survey._id}")
+			input#user_status(type="hidden",value="#{user_doing_survey.status}")
+			input#actual_section(type="hidden",value="#{user_doing_survey.actual_section}")
+			br
+			br
+			h1 #{survey.title}
+			case survey.type_time_apply
+				when "start_null_end_null"
+					div#global_resting_time(	data-type-time-apply="#{survey.type_time_apply}"
+												data-started-at		="#{survey.started_at}")
+				when "start_null_end_time"
+					div#global_resting_time(	data-type-time-apply="#{survey.type_time_apply}"
+												data-started-at		="#{survey.started_at}"
+												data-time-amount	="#{survey.time_amount}"
+												data-time-type		="#{survey.time_type}")
+				when "start_null_end_date"
+					div#global_resting_time(	data-type-time-apply="#{survey.type_time_apply}"
+												data-started-at		="#{survey.started_at}"
+												data-end			="#{survey.end}")
+				when "start_date_end_null"
+					div#global_resting_time(	data-type-time-apply="#{survey.type_time_apply}"
+												data-start			="#{survey.start}"
+												data-started-at		="#{survey.started_at}")
+				when "start_date_end_time"
+					div#global_resting_time(	data-type-time-apply="#{survey.type_time_apply}"
+												data-start			="#{survey.start}"
+												data-started-at		="#{survey.started_at}"
+												data-time-amount	="#{survey.time_amount}"
+												data-time-type		="#{survey.time_type}")
+				when "start_date_end_date"
+					div#global_resting_time(	data-type-time-apply="#{survey.type_time_apply}"
+												data-start			="#{survey.start}"
+												data-started-at		="#{survey.started_at}"
+												data-end			="#{survey.end}")
+			div(style="border:solid 2px;padding:5%;margin:5%;")
+				!= survey.description
+			a#toggle_conditions(href="javascript:;")
+				strong Condiciones
+			br
+			br
+			#div_conditions
+				Aqui van las condiciones inferidas
+			br
+			h3 Secciones
+			br
+			.mdl-grid
+				each section in sections
+					.mdl-cell.mdl-cell--3-col
+						.mdl-grid(style="border:solid 0.3px;")
+							.mdl-cell.mdl-cell--12-col
+								h4 #{section.name}
+							if survey.development == "choosen_by_user"
+								.mdl-cell.mdl-cell--12-col
+									span.cronometro.resting_time(	id="section_resting_time_#{section._id}",
+																	data-id-section = "#{section._id}",
+																	data-started-at="#{section.started_at}",
+																	data-finished-at="#{section.finished_at}",
+																	data-time-limit-type = "#{section.time_limit.type}",
+																	data-time-limit-val = "#{section.time_limit.val}",
+																	data-pausing="#{section.pausing}")
+								.mdl-cell.mdl-cell--6-col
+									button.mdl-button.mdl-js-button.mdl-button--primary
+										strong Preview
+								.mdl-cell.mdl-cell--6-col
+									button.mdl-button.mdl-js-button.mdl-button--primary.link_section(	id = "enter_section_#{section._id}"
+																										data-id-section = "#{section._id}",
+																										data-started-at="#{section.started_at}",
+																										data-finished-at = "#{section.finished_at}",
+																										data-time-limit-type = "#{section.time_limit.type}",
+																										data-time-limit-val = "#{section.time_limit.val}",
+																										data-pausing="#{section.pausing}")
+										if section.finished_at
+											strong Ver
+										else
+											strong Realizar
+							else
+								.mdl-cell.mdl-cell--12-col
+									button.mdl-button.mdl-js-button.mdl-button--primary
+										strong Preview
+							br
+							br
+							br
+							br
+						br
+						br
+		#sections_interface(style="display:none;")
+			each section in sections
+				if section.started_at
+					div(id="section_live_#{section._id}",
+						data-id-section="#{section._id}",
+						data-finished-at="#{section.finished_at}"
+						style="display:none;",
+						align="center")
+		br
+		br
+		br
+		br
+		br
+		script(src='/assets/survey-live/js/material.js')
+		script(src='/assets/general/js/jquery.js')
+		script(src='/assets/general/js/core.js')
+		script(src='/assets/general/js/socket.io.js')
+		script(src='/assets/survey-live/js/main.js')

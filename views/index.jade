@@ -1,0 +1,105 @@
+doctype html
+html
+	head
+		meta(charset='UTF-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+		meta(name='description', content='sistema de censos')
+		meta(name='keywords', content='HTML, CSS, JS, JavaScript, framework, metro, front-end, frontend, web development')
+		meta(name='author', content='jose rosendo')
+		link(rel='shortcut icon', type='image/x-icon', href='favicon.ico')
+		title sistema de cuestionarios
+		link(href='assets/logged/css/metro.css', rel='stylesheet')
+		link(href='assets/logged/css/metro-icons.css', rel='stylesheet')
+		link(href='assets/logged/css/metro-responsive.css', rel='stylesheet')
+		link(href='assets/logged/css/datetimepicker.css', rel='stylesheet')
+		link(href='assets/logged/css/jquery.tagsinput.css', rel='stylesheet')
+	body.bg-steel
+		.app-bar.fixed-top.darcula(data-role='appbar')
+			a.app-bar-element.branding Sistema de Censos
+			span.app-bar-divider
+			ul.app-bar-menu
+				li
+					a(href='javascript:;') Dashboard
+				li
+					a.dropdown-toggle(href='javascript:;') Project
+					ul.d-menu(data-role='dropdown')
+						li
+							a(href='javascript:;') New project
+						li.divider
+						li
+							a.dropdown-toggle(href='javascript:;') Reopen
+							ul.d-menu(data-role='dropdown')
+								li
+									a(href='javascript:;') Project 1
+								li
+									a(href='javascript:;') Project 2
+								li
+									a(href='javascript:;') Project 3
+								li.divider
+								li
+									a(href='javascript:;') Clear list
+			.app-bar-element.place-right
+				span.dropdown-toggle
+					span.mif-cog
+					|	User Name
+				.app-bar-drop-container.padding10.place-right.no-margin-top.block-shadow.fg-dark(data-role='dropdown', data-no-close='true', style='width: 220px')
+					h2.text-light Quick settings
+					ul.unstyled-list.fg-dark
+						li
+							a.fg-white3.fg-hover-yellow(href='/logout') Exit
+		.page-content
+			.flex-grid.no-responsive-future(style='height: 100%;')
+				.row(style='height: 100%')
+					#cell-sidebar.cell.size-x200(style='background-color: #71b1d1; height: 100%')
+						ul.sidebar
+							li
+								a(href='/')
+									span.mif-apps.icon(style="display:none;")
+									span.title Inicio
+									span.counter(style="display:none;") 0
+							li
+								a(href='/my-surveys')
+									span.mif-apps.icon(style="display:none;")
+									span.title Mis Censos
+									span.counter(style="display:none;") 0
+							li
+								a(href='/community')
+									span.mif-apps.icon(style="display:none;")
+									span.title Comunidad
+									span.counter(style="display:none;") 0
+							li
+								a(href='/profile')
+									span.mif-apps.icon(style="display:none;")
+									span.title Perfil
+									span.counter(style="display:none;") 0
+							if type_user == 'admin'
+								li
+									a(href='/admin')
+										span.mif-apps.icon(style="display:none;")
+										span.title Admin
+										span.counter(style="display:none;") 0
+					case nameSection
+						when "my-surveys"
+							include my-surveys.jade
+						when "admin"
+							include admin.jade
+						when "community"
+							include community.jade
+		script(src='assets/logged/js/jquery.js')
+		script(src='assets/logged/js/metro.js')
+		script(src='assets/general/js/socket.io.js')
+		script(src='assets/general/js/core.js')
+		case nameSection
+			when "my-surveys"
+				script(src='assets/logged/js/select2.js')
+				script(src='assets/logged/js/moment-with-locales.js')
+				script(src='assets/logged/js/datetimepicker.js')
+				script(src='assets/logged/js/jquery.tagsinput.js')
+				script(src='assets/logged/js/tinymce.js')
+				script(src='assets/logged/js/monitoring-surveys.js')
+				script(src='assets/logged/js/my-surveys.js')
+				script(src='assets/logged/js/new-survey.js')
+				script(src='assets/logged/js/edit-survey.js')
+			when "admin"
+				script(src='assets/logged/js/admin.js')

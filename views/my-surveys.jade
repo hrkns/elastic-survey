@@ -1,0 +1,82 @@
+#cell-content.cell.auto-size.padding20.bg-white(style="overflow:scroll;")
+	.fluent-menu(data-role="fluentmenu")
+		ul.tabs-holder
+			li
+				a(href="#tab1",id="clicktab1") Lista de Censos
+			li
+				a(href="#tab2",id="clicktab2") Crear Censo
+			li(style="display:none;",id="tab_edit_survey")
+				a(href="#tab3",id="clicktab3") Survey Editing
+	.tabs-content
+		#tab1.tab-panel(style="display:none;")
+			include list-of-my-surveys.jade
+		#tab2.tab-panel(style="display:none;")
+			include form-new-survey.jade
+		#tab3.tab-panel(style="display:none;")
+			include form-edit-survey.jade
+
+#modales(style="display:none;")
+	div(data-role="dialog",id="edit_description_field_survey",data-type="",data-close-button="true",style="padding:2%;")
+		textarea(id="description_field_survey",class="rich_textarea")
+		br
+		button.button.primary(id="set_description_field") Aplicar
+		button.button.danger(id="cancel_editing_description_field") Cancelar
+
+	div(data-role="dialog",id="activate_survey",data-type="",data-close-button="true",style="padding:2%;")
+		p ¿Desea activar este cuestionario?
+		button.button.primary(id="activate_survey_ok") Activar
+		button.button.danger(id="activate_survey_cancel") Cancelar
+
+	div(data-role="dialog",id="stop_survey",data-type="",data-close-button="true",style="padding:2%;")
+		p ¿Desea detener este cuestionario?
+		button.button.primary(id="stop_survey_ok") Detener
+		button.button.danger(id="stop_survey_cancel") Cancelar
+
+	div(data-role="dialog",id="dialog_start_selected_surveys",data-type="",data-close-button="true",style="padding:2%;")
+		p ¿Desea activar los cuestionarios seleccionados?
+		button.button.primary(id="start_selected_surveys_ok") Activar
+		button.button.danger(id="start_selected_surveys_cancel") Cancelar
+
+	div(data-role="dialog",id="dialog_stop_selected_surveys",data-type="",data-close-button="true",style="padding:2%;")
+		p ¿Desea detener los cuestionarios seleccionados?
+		button.button.primary(id="stop_selected_surveys_ok") Detener
+		button.button.danger(id="stop_selected_surveys_cancel") Cancelar
+
+	div(data-role="dialog",id="dialog_delete_selected_surveys",data-type="",data-close-button="true",style="padding:2%;")
+		p ¿Desea eliminar los cuestionarios seleccionados?
+		button.button.primary(id="delete_selected_surveys_ok") Eliminar
+		button.button.danger(id="delete_selected_surveys_cancel") Cancelar
+
+	div(data-role="dialog",id="dialog_fixing_schema",data-type="",data-close-button="true",style="padding:2%;")
+		p Edite patron de correcion aplicable a todos los campos de este grupo
+		.grid
+			.row
+				.cell.colspan5
+					label.input-control.radio.small-check
+						input(type="radio",name="fix_option" value = "fix", checked="checked",onclick="$('#fixing_schema_do_fix_type').show(200);")
+						span.check
+						span.caption Permitir correción
+					div#fixing_schema_do_fix_type(style='padding-left:2.5%;')
+						label.input-control.radio.small-check
+							input(type="radio",name="do_fix_type" value = "infinite",checked="checked",onclick="$('#fixing_schema_do_fix_limited_val').hide(200);")
+							span.check
+							span.caption Sin limite de veces
+						br
+						label.input-control.radio.small-check
+							input(type="radio",name="do_fix_type" value = "limited",onclick="$('#fixing_schema_do_fix_limited_val').show(200);")
+							span.check
+							span.caption Con limite de veces
+							div#fixing_schema_do_fix_limited_val(style='padding-left:2.5%;display:none;')
+								.input-control.text
+									input(type="text",id="fix_limited_cant_times",placeholder="")
+				.cell.colspan5
+					label.input-control.radio.small-check
+						input(type="radio",name="fix_option" value = "nofix",onclick="$('#fixing_schema_do_fix_type').hide(200);")
+						span.check
+						span.caption No permitir correción
+		br
+		br
+		br
+		button.button.primary(id="fixing_schema_ok") Aplicar
+		button.button.danger(id="fixing_schema_cancel") Cancelar
+input#aux_file_browser(style="display:none;",type="file")

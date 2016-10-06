@@ -1,0 +1,44 @@
+texto
+	longitud minima, maxima
+	multilinea
+	proteccion vocabulario (groserias)
+email
+	unico, multiple(cantidad minima, maxima), puede ser vacio o no
+imagen
+	formatos
+	peso maximo
+	dimensiones
+	analisis inteligente facial
+audio
+	peso maximo
+	formatos
+video
+	peso maximo
+	formatos
+numerico
+	rango
+telefono
+	formatos de paises, o formato internacional (averiguar mas)
+identificacion (formateado segun el pais)
+enumerado
+	varios valores, escoger uno solo, o varios, con limite o sin limite, o con condicionamiento entre ellos
+sexo
+	(esto es un enumerado pero mas directo)
+paises (o estados de un pais, o ciudades de un pais o estado)
+localizacion geografica
+	usando alguna api de mapas
+fecha
+fecha + hora
+intervalo de fecha
+intervalo de fecha + hora
+intervalo de horas
+dias de la semana
+meses
+intervalos de años
+intervalos de meses
+
+
+
+
+
+rating (con estrellitas o sistemas de puntuacion)

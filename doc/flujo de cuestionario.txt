@@ -1,0 +1,74 @@
+el usuario accede a traves del link
+
+si no tiene acceso entonces lanzar el respectivo mensaje de advertencia
+
+si tiene acceso, entonces...
+
+mostrar titulo y descripcion, ademas de las condiciones que se infieran en base a la configuración del cuestionario
+
+si las secciones son de acceso libre, entonces mostrarlas todas y especificar cuales son de libre entrada/salida, y cuales una vez haya entrado, ya no puede salir
+
+si no son de acceso libre sino con un orden pautado (estricto o aleatorio, lo aleatorio se plantea luego de pulsar el boton start), pensar si mostrar un preview de las secciones existentes o solo hacer una referencia minima a ellas, o alguna otra alternativa
+
+en caso de que el cuestionario posea un tiempo predeterminado para realizarlo, habilitar un boton de iniciar, con la respectiva confirmacion (no podria entrar a ninguna seccion si no le ha dado start)
+
+en base a lo anterior, no se aceptaran carga de respuestas si no hay confirmacion de inicio (en caso de que esta sea necesaria)
+
+para aquellas con una fecha de cierre, pensar si lo de cierre aplica para iniciar el cuestionario, o aplica tambien para la realizacion del mismo, es decir, si en el transcurso de realizacion del mismo se llega a la fecha limite, entonces el cuestionario cierra, o sencillamente no se admiten nuevos postulantes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----
+estando en seccion...
+
+si las preguntas son de acceso libre entonces presentarlas todas de golpe
+
+si no, entonces irlas presentando una por una (por cuestiones de seguridad no haria como duolingo que se trae todas las oraciones sino que traeria una por una, ¿en serio?)
+
+con respecto a criterio de correcion
+	para aquellas preguntas (o sistemas) que funcionen en base a responder de manera correcta, van las siguientes consideraciones
+	1) considerar si se quiere mostrar al encuestado la(s) respuesta(s) correcta(s) a una(s) interrogantes dadas
+		en caso de que asi sea, decidir si:
+			será una vez realizada la misma pregunta
+			o al final de la seccion o cuestionario global
+	2) para aquellos sistemas en los que no se pasará de una pregunta hasta al tanto no la responda correctamente, decidir:
+		si no acierta ninguna de las veces disponibles la pregunta, ¿pasa o no pasa a la siguiente? ¿seria un criterio global o depende de cada pregunta? ¿se seguiria la logica de la cantidad de correciones, que podemos editar de manera individual cada field y a su vez se tiene un editor global? ¿en caso de que no pase, se termina el cuestionario o solo la seccion donde se encuentra (a menos claro esta que sea la unica seccion o la ultima por desarrollaro, solo entonces si se terminaria el cuestionario)
+	en caso de que esté disponible volver a corregir una pregunta, tomar en cuenta que si esta tiene un tiempo limite asociado, este empieza cuando se entra a la pregunta, se termina cuando se sale de ella, y asi sucesivamente...
+
+cuando pase de una seccion a otra (en el caso secuencial) darle una pausa, y esperar confirmacion por parte de el para empezar la siguiente seccion
+----
+habiendo terminado todas las secciones...
+	mostrar comentarios
+	mostrar puntuaciones
+	mostrar resultados 
+	compartir redes sociales
+	alguna otra cosa que no se me haya ocurrido

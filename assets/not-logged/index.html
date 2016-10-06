@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>sistema de censos</title>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/not-logged/css/normalize.css">
+    <link rel="stylesheet" href="assets/not-logged/css/style.css">
+  </head>
+  <body>
+    <div class="form">
+      <ul class="tab-group" id = "tabs">
+        <li class="tab active"><a href="#signup">Registrarse</a></li>
+        <li class="tab"><a href="#login">Iniciar Sesión</a></li>
+        <li class="tab"><a href="#recover">Recuperar</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="signup">
+          <h1>Registrate Gratis</h1>
+          <form action="/" method="post" id = "form_register">
+            <div class="field-wrap">
+              <label>
+              Nombre Completo<span class="req">*</span>
+              </label>
+              <input type="text" required autocomplete="off" id = "register_fullname"/>
+            </div>
+            <div class="field-wrap">
+              <label>
+              Dirección de Email<span class="req">*</span>
+              </label>
+              <input type="email" required autocomplete="off" id = "register_email"/>
+            </div>
+            <div class="field-wrap">
+              <label>
+              Contraseña<span class="req">*</span>
+              </label>
+              <input type="password" required autocomplete="off" id = "register_password"/>
+            </div>
+            <button type="submit" class="button button-block"/>Comenzar</button>
+          </form>
+        </div>
+        <div id="login" style = "display:none;">
+          <h1>Bienvenido</h1>
+          <form action="/" method="post" id = "form_login">
+            <div class="field-wrap">
+              <label>
+              Correo<span class="req">*</span>
+              </label>
+              <input type="email"required autocomplete="off" id = "login_email"/>
+            </div>
+            <div class="field-wrap">
+              <label>
+              Contraseña<span class="req">*</span>
+              </label>
+              <input type="password"required autocomplete="off" id = "login_password"/>
+            </div>
+            <button class="button button-block"/>Ingresar</button>
+          </form>
+        </div>
+        <div id="recover"  style = "display:none;">
+          <form action="/" method="post" id = "form_recover">
+            <div class="field-wrap">
+              <label>
+              Correo<span class="req">*</span>
+              </label>
+              <input type="email"required autocomplete="off" id = "recover_email"/>
+            </div>
+            <button class="button button-block"/>Recuperar Cuenta</button>
+          </form>
+        </div>
+        <div id = "message" style= "display:none;">
+        </div>
+      </div>
+      <!-- tab-content -->
+    </div>
+    <!-- /form -->
+    <script src='assets/general/js/jquery.js'></script>
+    <script src="assets/not-logged/js/index.js"></script>
+    <script src="assets/not-logged/js/register.js"></script>
+    <script src="assets/not-logged/js/login.js"></script>
+    <script src="assets/not-logged/js/recover.js"></script>
+    <script src="assets/general/js/core.js"></script>
+  </body>
+</html>

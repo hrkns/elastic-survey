@@ -1,0 +1,224 @@
+h3 Editing Survey
+form#form_edit_survey
+	.grid
+		.row
+			.cell.colspan5
+				p Title	
+				.input-control.text(style="width:100%;")
+					input(type="text",id="edit_survey_title",placeholder="Place the title of your survey here")
+				br
+				br
+				p(style="display:inline;") Ficheros
+				a(href = "javascript:;", id = "edit_survey_add_file") &nbsp;(Add)
+				#edit_survey_files.grid
+			.cell.colspan6
+				p Description
+				.input-control.textarea(data-role="input",data-text-auto-resize="true", style="width:100%;")
+					textarea(id="edit_survey_description",placeholder="Set a description",class="rich_textarea")
+				br
+		a(href = "javascript:;" onclick = "$('#edit_survey_configs').toggle(500);") Mostrar/Ocultar configuraciones
+		#edit_survey_configs(style='display:none;')
+			.row
+				.cell.colspan5
+					p 
+						strong Intervalo de aplicación
+					label.input-control.radio.small-check
+						input(type="radio", name = "application_interval", checked, value = "start_null_end_null", id="edit_survey_application_interval_1")
+						span.check
+						span.caption Apertura y cierre manual
+					br
+					label.input-control.radio.small-check
+						input(type="radio" name = "application_interval", value = "start_null_end_time")
+						span.check
+						span.caption Apertura manual, mantener abierta durante un lapso de tiempo
+
+					#edit_survey_application_interval_start_null_end_time(style="display:none;padding-left:5%;",data-type="div_type_app")
+						p Lapso de tiempo
+						.input-control.text(style="width:50px;")
+							input(type="text",id="edit_survey_time_amount_3")
+						.input-control.select
+							select(id="edit_survey_time_type_3")
+								option(value="seconds") Segundos
+								option(value="minutes") Minutos
+								option(value="hours") Horas
+								option(value="days") Dias
+								option(value="weeks") Semanas
+					br
+					label.input-control.radio.small-check
+						input(type="radio" name = "application_interval", value = "start_null_end_date")
+						span.check
+						span.caption Apertura manual, cerrar en una determinada fecha
+					#edit_survey_application_interval_start_null_end_date(style="display:none;padding-left:5%;",data-type="div_type_app")
+						p Fecha de cierre
+						.input-control.text(data-role="__datepicker")
+							input(type="text",id="edit_survey_survey_end_4")
+					br
+					label.input-control.radio.small-check
+						input(type="radio" name = "application_interval", value = "start_date_end_null")
+						span.check
+						span.caption Aperturar en fecha, cerrar manualmente
+					#edit_survey_application_interval_start_date_end_null(style="display:none;padding-left:5%;",data-type="div_type_app")
+						p Fecha de apertura
+						.input-control.text(data-role="datepicker")
+							input(type="text",id="edit_survey_survey_start_5")
+					br
+					label.input-control.radio.small-check
+						input(type="radio" name = "application_interval", value = "start_date_end_time")
+						span.check
+						span.caption Apertura en fecha, especificar tiempo de duración
+					#edit_survey_application_interval_start_date_end_time(style="display:none;padding-left:5%;",data-type="div_type_app")
+						.grid
+							.row
+								.cell.colspan4
+									p Fecha de apertura
+									.input-control.text(data-role="datepicker")
+										input(type="text",id="edit_survey_survey_start_6")
+								.cell.colspan6
+									p Lapso de tiempo
+									.input-control.text(style="width:50px;")
+										input(type="text",id="edit_survey_time_amount_6")
+									.input-control.select
+										select(id="edit_survey_time_type_6")
+											option(value="seconds") Segundos
+											option(value="minutes") Minutos
+											option(value="hours") Horas
+											option(value="days") Dias
+											option(value="weeks") Semanas
+					label.input-control.radio.small-check
+						input(type="radio" name = "application_interval", value = "start_date_end_date")
+						span.check
+						span.caption Apertura y cierre en base a fechas
+					#edit_survey_application_interval_start_date_end_date(style="display:none;padding-left:5%;",data-type="div_type_app")
+						.grid
+							.row
+								.cell.colspan4
+									p Inicio
+									.input-control.text(data-role="__datepicker")
+										input(type="text",id="edit_survey_survey_start_2")
+								.cell.colspan6
+									p Fin
+									.input-control.text(data-role="__datepicker")
+										input(type="text",id="edit_survey_survey_end_2")
+					br
+				.cell.colspan3
+					p
+						strong Ingrese términos claves asociados a la encuesta
+					.input-control.text(style="width:100%;")
+						input(id="edit_survey_tags")
+					br
+					br
+					br
+					br
+					br
+					p 
+						strong Privacidad
+					label.input-control.radio.small-check
+						input(type="radio",name="edit_survey_privacy", value = "all", checked,id="edit_survey_privacy_all")
+						span.check
+						span.caption Todos (Registrados + No registrados)
+					#div_edit_survey_privacy_all(style="padding-left:3%;")
+						label.input-control.checkbox.small-check
+							input(type="checkbox", id = "edit_survey_privacy_access_tokens" onchange = '$("#edit_survey_div_access_tokens").css("display", this.checked?"":"none")')
+							span.check
+							span.caption Con tokens de acceso
+							#edit_survey_div_access_tokens(style='display:none;padding-left:2.5%;')
+								p Introduzca 
+								.input-control.text(style="width:100%;")
+									input(id="edit_survey_access_tokens")
+					br
+					br
+					br
+					br
+					br
+					br
+					br
+					br
+					br
+					br
+					label.input-control.radio.small-check
+						input(type="radio",name="edit_survey_privacy" value = "only_registered",id="edit_survey_privacy_only_registered")
+						span.check
+						span.caption Solo usuarios registrados
+					br
+					label.input-control.radio.small-check
+						input(type="radio",name="edit_survey_privacy" value = "only_contacts",id="edit_survey_privacy_only_contacts")
+						span.check
+						span.caption Solo contactos
+					br
+					label.input-control.radio.small-check
+						input(type="radio",name="edit_survey_privacy" value = "specific",id="edit_survey_privacy_specific")
+						span.check
+						span.caption Contactos en especifico
+					#edit_survey_div_specific_contacts(style="display:none;")
+						select#edit_survey_specific_contacts(multiple="multiple")
+							option(value="1") op1
+							option(value="2") op2
+					br
+			.row
+				.cell.colspan5
+					p
+						strong Dinamica de desarrollo de grupos
+					div(style="padding-left:5%;")
+						label.input-control.radio.small-check
+							input(type="radio",name="edit_survey_groups_development" id = "groups_development_choosen_by_user_edit" value = "choosen_by_user" checked)
+							span.check
+							span.caption 
+								strong Escogida por el usuario: 
+								| este es libre de desarrollar los grupos en el orden que desee.
+						br
+						br
+						label.input-control.radio.small-check
+							input(type="radio",name="edit_survey_groups_development" id = "groups_development_programmed_edit" value = "programmed")
+							span.check
+							span.caption 
+								strong Estricta: 
+								| el orden de desarrollo es establecido por el encuestador
+							div#edit_survey_groups_development_programmed_options(style='display:none;padding-left:5%;')
+								label.input-control.radio.small-check
+									input(type="radio",name="edit_survey_groups_development_programmed_options_ordering" value = "loaded" checked)
+									span.check
+									span.caption Único (tal como se carga)
+								br
+								label.input-control.radio.small-check
+									input(type="radio",name="edit_survey_groups_development_programmed_options_ordering" value = "random")
+									span.check
+									span.caption Aleatorio
+					br
+				.cell.colspan5
+					p
+						strong Aplicacion de subconjunto de secciones
+					div(style="padding-left:5%;")
+						label.input-control.radio.small-check
+							input(type="radio",name="edit_survey_groups_subset" id = "edit_survey_groups_subset_no" value = "no" checked)
+							span.check
+							span.caption Mostrar todas las secciones para su desarrollo
+						br
+						label.input-control.radio.small-check
+							input(type="radio",name="edit_survey_groups_subset" value = "yes")
+							span.check
+							span.caption Mostrar solo un subconjunto
+						br
+						.input-control.text(data-role="__datepicker",style="display:none;padding-left:3.5%;")
+							input(type="text",id="edit_survey_groups_subset_amount",placeholder="Cantidad")
+			.row
+				.cell.colspan5
+					br
+					br
+					input#edit_survey_let_comments(type="checkbox")
+					span &nbsp Permitir comentarios en la encuesta
+					br
+					br
+					input#edit_survey_let_score(checked="checked",type="checkbox")
+					span &nbsp Permitir calificar la encuesta
+	br
+	br
+	br
+	br
+	br
+	br
+	br
+	button.button.success(id="edit_survey_add_data_group") Añadir Grupo de Datos
+	div#edit_survey_data_group
+	br
+	br
+	button.button.large-button.success(style="width:100%;") Guardar Cambios

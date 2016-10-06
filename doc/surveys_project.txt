@@ -1,0 +1,128 @@
+aplicar criterio de correcion (que durante la carga del cuestionario se etiquete a ciertos valores como correctos y otros como incorrectos, habilitar/deshabilitar opcion)
+
+con respecto a lo de correcion, podria programarse tambien que por ejemplo, si el desarrollo de preguntas es lineal y no libre, que no supere la pregunta actual sino hasta que no haya respondido correctamente la pregunta actual(y configurar como verdad/falso que, si no pasa una pregunta, se detiene el cuestionario o grupo, o si sigue como si nada, si tenerlo como configuración global o dependiendo de la pregunta)
+
+*ficheros adjuntos a cuestionario
+
+permitir o no permitir regresar en el cuestionario, es decir, corregir alguna respuesta dada
+
+criterio de correctitud para determinados tipos de preguntas en los cuestionarios
+
+/********************************************************************************************************************************************************************************/
+hilos de chat (categorizados, usando el longpolling con nodejs, blablabla... hacer una red con lo minimo de "comunicatividad")
+
+seguir a usuario
+ser seguido por usuario
+tener categorias de usuario
+
+administracion de idiomas
+
+terminos en un idioma
+/********************************************************************************************************************************************************************************/
+limite de encuestas provenientes de la misma ip (de la misma termo, recuerda lo de las wan), o como bloquear ataques y ddos y robots
+
+- quien puede hacer una encuesta?
+	solo contactos + contactos de contactos + contactos de contactos de contactos... etc, etc, etc... (¿como defines un limite para esto?)
+	solo determinados usuarios + invitaciones de estos usuarios + etc, etc etc... (¿como defines un limite para  esto?)
+
+=> ¿cuantas veces maxima puede responder un usuario una encuesta? 1, 2, 3, ... sin limites?
+?> para encuesta abiertas, sin necesidad de login, marcar este limite en base a ip... aja, ¿y como solucionas lo de usuarios en una red local o incluso en una red metropolitana?
+/********************************************************************************************************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- administracion de arbol de categorias como admin (o lista de categorias, sin jerarquia)
+- si se crea arbol de categorias, entonces una encuesta solo puede ubicarse en una categoria, si es una lista de categorias, entonces la encuesta puede pertenecer a varias categorias
+
+- aplicacion de encuesta
+	=> manejo de prórroga
+	* PENSAR
+- crear copia de encuesta
+
+* categorias publicas (para ayudar al usuario cualquiera en busqueda de encuestas)
+* categorias personales (organizacion personal de encuestas)
+* tags (que serviria para ambos)
+
+ordenamiento en busqueda (personal y publica)*PENSAR
+
+privacidad de respuestas dadas por un usuario
+
+notificaciones en tiempo real
+	comentarios en encuesta
+	seguimiento
+	respuesta en encuesta
+
+REFACTORIZAR CODIGO Y DISEÑO DE BASE DE DATOS
+
+archivo .json que contiene dependencias para drops en base de datos
+
+envio de correos, grupos de correos, listas de correos, 
+
+es bueno recolectar lo de las paginas web para tener referencias acerca de que cosas implementar y que no, modelos de pago, costos, modelo de negocios, funcionalidades, ideas nuevas, diseños, etc... marcadores surveys en google chrome
+
+las situaciones excepcionales como iniciar antes de una fecha prevista (que se podria solventar facilmente cambiando la fecha de inicio pero hay veces en que el usuario es terco) queriendo hacerlo manualmente o cancelar/cerrar/eliminar un survey antes del final previsto (cuando hay un tiempo o fecha programada, esto si es mas logico de implementar), o querer modificar datos del mismo durante el transcurso, o el manejo de la prorroga, seran implementados luego que se realice el workflow de una encuesta mientras esta activa (viendo como encuestado y no como encuestador), ya que esos operaciones (las planteadas al principio del parrafo) tienen incidencias claras en ese workflow
+
+en preguntas de varias opciones, crear un tipo que permita crear pregunta con varias opciones y que el usuario pueda añadir nuevas
+
+permitir que se puedan ver las estadisticas asociadas mientras se hace la encuesta o no (es decir, si tengo una pregunta de seleccion multiple, poder ver antes de escoger cuantas veces han sido seleccionadas cada una o no), o verlos inmediatamente despues de haber escogido, o verlos todos al final
+
+manejar mvc en el lado del servidor, mas que todo en la parte de base de datos (los modelos)
+
+crear mini-libreria para creacion de interfaces dinamicas con js (lo que habia modelado la otra vez, con los json y todo eso)
+
+condicionamiento entre preguntas (inicialmente para aquellos en los que desarrolle linealmente)
+
+habilitar reclamos/comentarios asociados a una pregunta (y como manejamos la cuestion del tiempo de la pregunta en caso de que lo haya mientras realiza el reclamo)
+
+bloquear/permitir la realizacion de un cuestionario mientras se esta realizando algun otro
+
+ofrecer al encuestador plantillas y css variados para las encuestas
+
+un boton en el formulario de crear encuestas (no estoy seguro de como encajaria en el editar encuestas) que indique que tipo de cuestionario es, para configurar el formulario a conveniencia
+
+llenado de encuestas offline (a que nos referimos con esto, como lo implementariamos)
+
+exportar resultados de la encuesta, analytics y todo eso
+
+redes sociales para registrarse
+
+numero telefonico para registrarse
+
+redes sociales para la pagina
+
+apps para redes sociales y movil
+
+folcsonomias hermanito...
+
+en las preguntas (y grupos) presentados de manera secuencial, dar opcion que permita regresar a ver algo ya hecho (pensar esto mejor, no implementarlo aun, pero no se como manejar esta intencion tal como esta el sistema ahorita)
+
+manejo de situaciones excepcionales
+	editar cuestionario en medio de la realizacion del mismo (cualquier elemento pertenciente al mismo, configuracion, item...)

@@ -1,0 +1,27 @@
+#cell-content.cell.auto-size.padding20.bg-white(style="overflow:scroll;")
+	.panel.collapsed(data-role="panel")
+		.heading
+			span.title Field Types
+		.content
+			table.table.striped.hovered.border.bordered
+				thead
+					td
+						p
+							strong Código
+					td
+						p
+							strong Nombre
+					td
+						p
+							strong Descripción
+					td
+				tbody(id="survey_field_types")
+					each val in field_types
+						tr
+							td(contenteditable="true" data-val="#{val.code}" data-name="code") #{val.code}
+							td(contenteditable="true" data-val="#{val.name}" data-name="name") #{val.name}
+							td(contenteditable="true" data-val="#{val.description}" data-name="description") #{val.description}
+							td(align="center")
+								button.button.primary(style="display:none;" data-type="save" data-id="#{val.id}") Guardar
+			button.button.success(style="width:100%",id="add_new_survey_type_field") Añadir
+	
